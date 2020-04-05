@@ -20,6 +20,7 @@ public:
    void Delete( int n ); // delete the nth node
    void Reverse(); // Reversing the linked list
    void Print();
+   void PrintRecursion( Node* ); // Print the linkedlist using recursion
 };
 
 //========IMPLEMENTING==========//
@@ -118,6 +119,12 @@ void LinkedList::Reverse()
    this->head = prev;
 }
 
+void LinkedList::PrintRecursion( Node* p )
+{
+   if ( p == NULL ) return; // Exit condition
+   PrintRecursion( p->next ); // Recursive call
+   cout << p->data << " " ; // First print the data
+}
 
 //==========MAIN PROGRAM===========//
 int main()
@@ -149,10 +156,12 @@ int main()
       cout << "Continue? (1 to proceed, 0 to cancel) ";
       cin >> confirm;
    } 
-   list.Reverse();
-   list.Print();
-   list.Reverse();
-   list.Print();
+   //list.Reverse();
+   //list.Print();
+   //list.Reverse();
+   //list.Print();
+   list.PrintRecursion( list.head );
+    
 }
 
 
