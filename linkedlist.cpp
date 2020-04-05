@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-
+//========DEFINING===========// 
 class Node
 {  
 public:
@@ -18,9 +18,11 @@ public:
    void Insert( int data ); // insert at the beginning of the list
    void Insert( int data, int n ); // insert the data to the list on the position nth
    void Delete( int n ); // delete the nth node
+   void Reverse(); // Reversing the linked list
    void Print();
 };
 
+//========IMPLEMENTING==========//
 void LinkedList::Insert( int data ) 
 {
    Node* temp = new Node();
@@ -45,7 +47,7 @@ void LinkedList::Insert( int data, int n )
    }
    else
    {
-      if ( n > count + 1 )
+      if ( n > count + 1 || n < 1 )
       {
          cout << " Overflow! \n";
          return;
@@ -66,7 +68,7 @@ void LinkedList::Insert( int data, int n )
 void LinkedList::Delete( int n )
 {
    Node* temp = this->head;
-   if ( n > count )
+   if ( n > count || n < 1 )
       cout << "Overflow!";
    else
    {
@@ -88,6 +90,7 @@ void LinkedList::Delete( int n )
       }  
    }
 }
+
 void LinkedList::Print()
 {
    Node* temp = head;
@@ -100,6 +103,23 @@ void LinkedList::Print()
    cout << "\n";
 }
 
+void LinkedList::Reverse()
+{
+   Node* current = this->head;
+   Node* prev = NULL;
+   Node* next = NULL;
+   while ( current != NULL )
+   {
+      next = current->next;
+      current->next = prev;
+      prev = current;
+      current = next;
+   }
+   this->head = prev;
+}
+
+
+//==========MAIN PROGRAM===========//
 int main()
 {
    int n = 0;
@@ -129,6 +149,10 @@ int main()
       cout << "Continue? (1 to proceed, 0 to cancel) ";
       cin >> confirm;
    } 
+   list.Reverse();
+   list.Print();
+   list.Reverse();
+   list.Print();
 }
 
 
