@@ -57,7 +57,9 @@ bool CheckBalanced ( string exp )
 
 int main()
 {
-   string a = "[()(){}{}{}]";
+   string a;
+   cout << "Insert the string you want to check balanced parenthesis: \n";
+   cin >> a;
    cout << CheckBalanced(a);
    return 0;
 }
